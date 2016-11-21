@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgSemanticModule } from 'ng-semantic';
 
 @Component({
   selector: 'app-root',
