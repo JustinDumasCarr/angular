@@ -20,11 +20,11 @@ MongoClient.connect('mongodb://'+dbUser+':'+dbPass+'@ds141128.mlab.com:41128/tes
 
 
 //Allows the app to parse json date
-//Different parameter is need to parse forms
+//Different parameter is needed to parse forms
 app.use(bodyParser.json());
 
 
-//Get that would determine if authentication was successful or not
+//Get that fetches all users ----> Will probably never be used but is useful for testing purposes
 app.get('/', (req, res) => {
     db.collection('users').find().toArray(function(err, results)
     {
@@ -34,13 +34,27 @@ app.get('/', (req, res) => {
 });
 
 
-//Sample post request
+//Sample post request that will register
+//Example: send post request with the following body { "username" : "admin", "pass" : "pass123"} and it will be added to the users database
 app.post('/users', (req, res) => {
     db.collection('users').insert(req.body, (err, result) =>
     {
         if (err) return console.log(err);
         console.log('saved to database');
-        res.redirect('/')
+        //Redirects to all users to check is registration was successful, delete later
+        res.redirect('/');
     })
 });
 
+//Post that will be used to authenticate
+app.post('/authenticate', (req, res) => {
+  db.collection('users').find(req.body).toArray(function(err, results)
+{
+  //This returns the username and password if found and nothing if it does not
+  res.send(results);
+
+  console.log(results);
+
+})
+
+});
