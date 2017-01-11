@@ -1,0 +1,22 @@
+<div class="formContainer">
+  <h2>Login</h2>
+<form class="ui form error" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+
+  <div *ngIf="validated==false" class="ui error message">
+    <div class="header">Error</div>
+    <p>Username and Password combination is incorrect</p>
+  </div>
+
+  <div class="field {{userError}}">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="username" ngModel>
+  </div>
+
+  <div class="field {{passError}}">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="password" ngModel>
+  </div>
+
+  <button class="ui button" type="submit">Login</button>
+</form>
+</div>

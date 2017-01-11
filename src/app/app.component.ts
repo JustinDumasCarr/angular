@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgSemanticModule } from 'ng-semantic';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,5 @@ import { NgSemanticModule } from 'ng-semantic';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Homepage';
 }
