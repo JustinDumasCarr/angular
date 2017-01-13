@@ -9,12 +9,12 @@
 
     <div class="field {{userError}}">
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" placeholder="username" ngModel>
+      <input type="text" id="username" name="username" placeholder="username" [(ngModel)]="regInfo.username">
     </div>
 
     <div class="field {{passError}}">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="password" ngModel>
+      <input type="password" id="password" name="password" placeholder="password" [(ngModel)]="regInfo.password">
     </div>
 
     <button class="ui button" type="submit">Register</button>
