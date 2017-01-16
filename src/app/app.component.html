@@ -1,3 +1,18 @@
 
-<app-login-form></app-login-form>
-<app-registration-form></app-registration-form>
+<div class="ui pointing menu">
+  <a class="item" [routerLink]="['home']" [routerLinkActive]="['active']">
+    Home
+  </a>
+  <a class="item" [routerLink]="['login']" [routerLinkActive]="['active']">
+    Login
+  </a>
+  <a class="item" [routerLink]="['register']" [routerLinkActive]="['active']">
+    Register
+  </a>
+
+
+
+
+</div>
+
+<router-outlet></router-outlet>

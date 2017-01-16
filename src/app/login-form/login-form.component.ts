@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-//Imports the http class that allows us to make http requests
-import {Http, Response, Headers} from '@angular/http';
-
+//Importing authentication service
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-login-form',
@@ -17,25 +16,19 @@ export class LoginFormComponent implements OnInit
   userError = "";
   passError = "";
 
-
   logInfo = {"username": "", "password": ""};
 
+  response: string;
 
-
-  //JSON data that will be received
-  RData: Object;
-
-
-  constructor(private http: Http)
+  constructor(private authService: AuthService)
   {
   }
 
   ngOnInit()
   {
-
   }
 
-  onSubmit(form: any): void
+  onSubmit(form: any): boolean
   {
     //console.log('you submitted value:', form);
     //Delete this later
@@ -62,39 +55,37 @@ export class LoginFormComponent implements OnInit
       this.passError = "";
     }
 
-
+    //If neither of the fields are empty then it proceeds to the authentication service
     if(form.username != "" && form.password != "")
     {
 
-      //Http request test (GET)
-      /*
-      this.http.request('http://localhost:3000/')
-        .subscribe((res: Response) => {
-          this.RData = res.json();
-          console.log(res.json());
-        });
-      */
-      //POST REQUEST
+      this.authService.login(form.username, form.password)
+        .subscribe
+        (
 
-      //'Content-Type: application/json'
-      var headers = new Headers();
-      headers.append('Content-Type', 'application/json');
+          data => {
+                    this.response = data;
+                    //console.log("LOGFORM RESPONSE" + this.response);
+                    if(this.response == "true")
+                    {
+                      this.validated = true;
+                      alert("Login Successful");
+                    }
+                    if(this.response == "false")
+                    {
+                      this.validated = false;
+                    }
 
-      this.http
-        .post('http://localhost:3000/authenticate', JSON.stringify(this.logInfo), {headers: headers})
-        .subscribe(data => {  if(JSON.parse(data["_body"])[0]["value"] == "true"){this.validated=true;alert("Login success");} else{this.validated=false} }
-        ,error => {console.log(JSON.stringify(error.json()));});
+                  }
+          //Database error validation goes here
+    /*      error =>  this.errorMessage = <any>error  */
 
-
-      //To get the validation value: JSON.parse(data["_body"])[0]["value"]
-
-
-
+        );
     }
-
-
-
+  return false;
   }
+
+
 
 
 }

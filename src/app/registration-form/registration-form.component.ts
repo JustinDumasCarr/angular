@@ -66,6 +66,8 @@ export class RegistrationFormComponent implements OnInit
       var headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
+
+      //This should be turned into a service later on
       this.http
         .post('http://localhost:3000/users', JSON.stringify(this.regInfo), {headers: headers})
         .subscribe(data => {  /* Does nothing right now */ }
