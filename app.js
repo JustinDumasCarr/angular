@@ -12,7 +12,7 @@ var dbUser = 'ConcertConnect';
 var dbPass = 'connect%408717';
 
 
-app.use
+
 
 //ADDING ACCESS CONTROL FOR EASIER TESTING, MAKE SURE THIS INFOR IS CORRECT BEFORE DEPLOYMENT
 app.use(cors({
