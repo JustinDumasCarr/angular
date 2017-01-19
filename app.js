@@ -3,6 +3,7 @@ const bodyParser= require('body-parser');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 var cors = require('express-cors');
+var routes = require('./routes');
 
 //Connecting to mongodb database
 var db;
@@ -10,6 +11,8 @@ var dbUser = 'ConcertConnect';
 //Need to escape @ character for the password
 var dbPass = 'connect%408717';
 
+
+app.use
 
 //ADDING ACCESS CONTROL FOR EASIER TESTING, MAKE SURE THIS INFOR IS CORRECT BEFORE DEPLOYMENT
 app.use(cors({
