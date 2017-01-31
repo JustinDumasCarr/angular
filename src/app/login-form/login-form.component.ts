@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 //Importing authentication service
 import { AuthService } from '../services/auth-service';
 
+//Importing Event Emitter for login function
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -16,9 +18,12 @@ export class LoginFormComponent implements OnInit
   userError = "";
   passError = "";
 
+
   logInfo = {"username": "", "password": ""};
 
   response: string;
+
+
 
   constructor(private authService: AuthService)
   {
@@ -65,11 +70,12 @@ export class LoginFormComponent implements OnInit
 
           data => {
                     this.response = data;
-                    //console.log("LOGFORM RESPONSE" + this.response);
                     if(this.response == "true")
                     {
                       this.validated = true;
                       alert("Login Successful");
+
+
                     }
                     if(this.response == "false")
                     {

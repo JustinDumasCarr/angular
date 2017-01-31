@@ -15,6 +15,7 @@ import { AccountComponent } from './account/account.component';
 
 //Services
 import {AUTH_PROVIDERS} from './services/auth-service';
+import {LoggedInGuard} from "./guards/loggedIn.guard";
 
 
 //Declaring the routes
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'register', component: RegistrationFormComponent },
   { path: 'login', component: LoginFormComponent },
-  { path: 'account', component: AccountComponent},
+  { path: 'account', component: AccountComponent, canActivate: [LoggedInGuard]},
   { path: '**', redirectTo: '/home' },
 
 ];
@@ -44,6 +45,7 @@ const routes: Routes = [
   ],
   providers: [/*{ provide: LocationStrategy, useClass: HashLocationStrategy }*/
                AUTH_PROVIDERS,
+                LoggedInGuard
               ], //Needed for routing
   bootstrap: [AppComponent]
 })

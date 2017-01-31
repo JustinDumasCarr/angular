@@ -3,11 +3,17 @@
   <a class="item" [routerLink]="['home']" [routerLinkActive]="['active']">
     Home
   </a>
-  <a class="item" [routerLink]="['login']" [routerLinkActive]="['active']">
+  <a *ngIf="!authService.isLoggedIn()" class="item" [routerLink]="['login']" [routerLinkActive]="['active']">
     Login
   </a>
-  <a class="item" [routerLink]="['register']" [routerLinkActive]="['active']">
+  <a *ngIf="!authService.isLoggedIn()" class="item" [routerLink]="['register']" [routerLinkActive]="['active']">
     Register
+  </a>
+  <a *ngIf="authService.isLoggedIn()" class="item" [routerLink]="['account']" [routerLinkActive]="['active']">
+    Account
+  </a>
+  <a *ngIf="authService.isLoggedIn()" class="item"  (click)="logout()">
+    Logout
   </a>
 
 

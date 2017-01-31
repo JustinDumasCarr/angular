@@ -1,4 +1,4 @@
-<div class="formContainer">
+<div class="formContainer" *ngIf="!authService.isLoggedIn()">
   <h2>Registration</h2>
   <form class="ui form error" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
 

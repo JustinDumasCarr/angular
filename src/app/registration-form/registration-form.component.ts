@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 //Imports the http class that allows us to make http requests
 import {Http, Response, Headers} from '@angular/http';
 
+//Importing authentication service to only display registration component when logged out
+import { AuthService } from '../services/auth-service';
+
+
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -21,7 +25,7 @@ export class RegistrationFormComponent implements OnInit
   regInfo = {"username": "", "password": ""};
 
 
-  constructor(private http: Http)
+  constructor(private http: Http,private authService: AuthService)
   {
   }
 
