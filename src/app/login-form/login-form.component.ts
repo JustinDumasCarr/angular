@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 //Importing authentication service
 import { AuthService } from '../services/auth-service';
 
+//Importing routing modules
+import {Router} from '@angular/router';
+
 //Importing Event Emitter for login function
 
 @Component({
@@ -25,7 +28,7 @@ export class LoginFormComponent implements OnInit
 
 
 
-  constructor(private authService: AuthService)
+  constructor(private authService: AuthService,private router: Router)
   {
   }
 
@@ -75,6 +78,8 @@ export class LoginFormComponent implements OnInit
                       this.validated = true;
                       alert("Login Successful");
 
+                      //Navigates to the protected component
+                      this.router.navigate(['/account']);
 
                     }
                     if(this.response == "false")
