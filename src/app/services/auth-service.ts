@@ -30,7 +30,7 @@ export class AuthService
     let options = new RequestOptions({ headers: headers });
 
     return this.http
-      .post('http://localhost:3000/authenticate', bodyString, options)
+      .post('http://localhost:3000/login', bodyString, options)
       .map((res:Response)=>
       {
 

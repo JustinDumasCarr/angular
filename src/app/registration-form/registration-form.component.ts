@@ -73,7 +73,7 @@ export class RegistrationFormComponent implements OnInit
 
       //This should be turned into a service later on
       this.http
-        .post('http://localhost:3000/users', JSON.stringify(this.regInfo), {headers: headers})
+        .post('http://localhost:3000/register', JSON.stringify(this.regInfo), {headers: headers})
         .subscribe(data => {  /* Does nothing right now */ }
           ,error => {console.log(JSON.stringify(error.json()));});
 
