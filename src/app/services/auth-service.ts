@@ -49,6 +49,8 @@ export class AuthService
         //Returns the value sp that validation can be done on the login component
         return this.authentication;
       })
+
+      .map((res:Response)=> res)
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
 
