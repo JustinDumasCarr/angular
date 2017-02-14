@@ -31,23 +31,7 @@ export class AuthService
 
     return this.http
       .post('http://localhost:3000/login', bodyString, options)
-      .map((res:Response)=>
-      {
-
-        this.authentication = JSON.parse(res["_body"])[0]["value"];
-        if(this.authentication=="true")
-        {
-          localStorage.setItem('username', user);
-         //
-        }
-        else
-        {
-        //
-        }
-
-        //Returns the value sp that validation can be done on the login component
-        return this.authentication;
-      })
+      .map((res:Response)=> res)
       .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
 

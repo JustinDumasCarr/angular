@@ -70,24 +70,9 @@ export class LoginFormComponent implements OnInit
       this.authService.login(form.username, form.password)
         .subscribe
         (
-
           data => {
-                    this.response = data;
-                    if(this.response == "true")
-                    {
-                      this.validated = true;
-                      alert("Login Successful");
-
-                      //Navigates to the protected component
-                      this.router.navigate(['/account']);
-
-                    }
-                    if(this.response == "false")
-                    {
-                      this.validated = false;
-                    }
-
-                  }
+              this.router.navigate(['/account']);
+            }
           //Database error validation goes here
     /*      error =>  this.errorMessage = <any>error  */
 
